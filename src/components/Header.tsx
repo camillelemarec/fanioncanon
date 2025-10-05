@@ -26,8 +26,9 @@ export default function Header() {
         <div className="flex justify-between items-center h-20">
           {/* Logo + Titre (gauche) */}
           <Link href="/" className={`flex items-center gap-3 ${league.className}`}>
-            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={64} height={64} className="object-contain" />
-            <span className="text-3xl font-bold text-navy-700 tracking-wide">Fanion Canon</span>
+            {/* 90x60 mm ≈ 340x227 px @96dpi. On adapte à ~80px de haut pour l’écran */}
+            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={120} height={80} className="object-contain" />
+            <span className="text-4xl font-bold text-navy-700 tracking-wide">Fanion Canon</span>
           </Link>
 
           {/* Navigation Desktop */}

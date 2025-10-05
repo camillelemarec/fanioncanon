@@ -58,7 +58,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © 2024 Fanion Canon. Tous droits réservés. | 
+            © 2025 Fanion Canon. Tous droits réservés. | 
             <a href="/mentions-legales" className="hover:text-accent-yellow transition-colors ml-2">Mentions légales</a>
           </p>
         </div>
