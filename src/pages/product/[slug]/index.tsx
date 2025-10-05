@@ -5,7 +5,7 @@ import Footer from '@/components/Footer'
 import { products } from '@/lib/data'
 import { useCart } from '@/contexts/CartContext'
 import Image from 'next/image'
-import { Minus, Plus, ShoppingCart } from 'lucide-react'
+import { Minus, Plus, ShoppingCart, BadgeCheck, Ruler, Sailboat } from 'lucide-react'
 import { useState } from 'react'
 
 export default function ProductPage() {
@@ -33,13 +33,13 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Galerie simple */}
           <div className="grid grid-rows-2 gap-4">
-            <div className="relative h-80 rounded-lg overflow-hidden">
-              <Image src={product.images[0]} alt={product.name} fill className="object-cover" />
+            <div className="relative h-80 rounded-lg overflow-hidden bg-white">
+              <Image src={product.images[0]} alt={product.name} fill className="object-contain" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               {product.images.slice(1,3).map((img, i) => (
-                <div key={i} className="relative h-40 rounded-lg overflow-hidden">
-                  <Image src={img} alt={`${product.name} ${i+2}`} fill className="object-cover" />
+                <div key={i} className="relative h-40 rounded-lg overflow-hidden bg-white">
+                  <Image src={img} alt={`${product.name} ${i+2}`} fill className="object-contain" />
                 </div>
               ))}
             </div>
@@ -67,27 +67,20 @@ export default function ProductPage() {
               </button>
             </div>
 
-            <div className="bg-cream-50 rounded-lg p-4 text-sm text-gray-700">
-              Livraison rapide — Paiement sécurisé — Retours sous 14 jours
+            <div className="bg-cream-50 rounded-lg p-4 text-sm text-gray-700 space-y-2">
+              <div className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-navy-700" /> Fait en France</div>
+              <div className="flex items-center gap-2"><Ruler className="h-4 w-4 text-navy-700" /> Dimensions: 28 × 30 cm</div>
+              <div className="flex items-center gap-2"><Sailboat className="h-4 w-4 text-navy-700" /> Toile de voile robuste, adaptée à tous les bateaux</div>
             </div>
 
-            {/* Univers déplacé ici */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
-              <div className="text-center">
-                <div className="bg-navy-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">🏔️</div>
-                <h3 className="font-semibold text-navy-700">Calanques Légendaires</h3>
-                <p className="text-gray-600 text-sm">Falaises calcaires et eaux turquoise.</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-navy-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">⛵</div>
-                <h3 className="font-semibold text-navy-700">Traditions Maritimes</h3>
-                <p className="text-gray-600 text-sm">L'esprit du Vieux‑Port.</p>
-              </div>
-              <div className="text-center">
-                <div className="bg-navy-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">⛪</div>
-                <h3 className="font-semibold text-navy-700">La Bonne Mère</h3>
-                <p className="text-gray-600 text-sm">Symbole protecteur de Marseille.</p>
-              </div>
+            {/* Fiche descriptive au lieu des emojis */}
+            <div className="pt-4">
+              <h2 className="font-heading text-navy-700 mb-2">Détails du produit</h2>
+              <ul className="list-disc pl-5 text-gray-700 space-y-1">
+                <li>Fabrication française</li>
+                <li>Dimensions: 28 × 30 cm</li>
+                <li>Toile de voile de qualité, tenue parfaite à bord et en intérieur</li>
+              </ul>
             </div>
           </div>
         </div>
