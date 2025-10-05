@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --foreground-rgb: 30, 58, 138;
+  --background-start-rgb: 254, 253, 251;
+  --background-end-rgb: 254, 253, 251;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+.btn-primary { @apply bg-navy-700 hover:bg-navy-800 text-white font-medium py-3 px-6 rounded-lg transition; }
+.btn-secondary { @apply bg-accent-yellow hover:bg-accent-red text-white font-medium py-3 px-6 rounded-lg transition; }
+
+
