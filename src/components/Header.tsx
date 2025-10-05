@@ -2,9 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-import { LogoSimple } from './Logo';
+import { Cinzel } from 'next/font/google';
+
+const cinzel = Cinzel({ subsets: ['latin'] });
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,9 +24,10 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <LogoSimple size="md" />
+          {/* Logo + Titre (gauche) */}
+          <Link href="/" className={`flex items-center gap-2 ${cinzel.className}`}>
+            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={40} height={40} className="object-contain" />
+            <span className="text-2xl font-bold text-navy-700">Fanion Canon</span>
           </Link>
 
           {/* Navigation Desktop */}
@@ -49,6 +53,8 @@ export default function Header() {
                 </span>
               )}
             </Link>
+
+            {/* rien côté droit (logo déplacé à gauche) */}
 
             {/* Menu Mobile */}
             <button
