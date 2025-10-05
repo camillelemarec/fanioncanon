@@ -34,4 +34,8 @@ public/images/*.jpeg
 public/images/*.png
 public/images/*.webp
 
+# Autoriser deux visuels du hero (le reste reste ignoré)
+!public/images/page1.jpeg
+!public/images/page12.jpeg
+
 
