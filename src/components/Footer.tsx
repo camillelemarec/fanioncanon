@@ -33,10 +33,11 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 font-heading">Liens Rapides</h3>
             <ul className="space-y-2">
-              <li><a href="/boutique" className="text-gray-300 hover:text-accent-yellow transition-colors">Boutique</a></li>
-              <li><a href="/notre-histoire" className="text-gray-300 hover:text-accent-yellow transition-colors">Notre Histoire</a></li>
-              <li><a href="/contact" className="text-gray-300 hover:text-accent-yellow transition-colors">Contact</a></li>
-              <li><a href="/livraison" className="text-gray-300 hover:text-accent-yellow transition-colors">Livraison</a></li>
+              <li><a href="/mentions-legales" className="text-gray-300 hover:text-accent-yellow transition-colors">Mentions légales</a></li>
+              <li><a href="/conditions-generales" className="text-gray-300 hover:text-accent-yellow transition-colors">CGV</a></li>
+              <li><a href="/confidentialite" className="text-gray-300 hover:text-accent-yellow transition-colors">Confidentialité</a></li>
+              <li><a href="/retours-remboursements" className="text-gray-300 hover:text-accent-yellow transition-colors">Retours & remboursements</a></li>
+              <li><a href="/expedition" className="text-gray-300 hover:text-accent-yellow transition-colors">Expédition</a></li>
             </ul>
           </div>
 
