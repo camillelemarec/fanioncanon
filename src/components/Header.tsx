@@ -5,9 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Menu, X } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
-import { Cinzel } from 'next/font/google';
+import { League_Spartan } from 'next/font/google';
 
-const cinzel = Cinzel({ subsets: ['latin'] });
+const league = League_Spartan({ subsets: ['latin'], weight: ['700'] });
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,9 +25,9 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo + Titre (gauche) */}
-          <Link href="/" className={`flex items-center gap-2 ${cinzel.className}`}>
-            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={40} height={40} className="object-contain" />
-            <span className="text-2xl font-bold text-navy-700">Fanion Canon</span>
+          <Link href="/" className={`flex items-center gap-3 ${league.className}`}>
+            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={56} height={56} className="object-contain" />
+            <span className="text-2xl font-bold text-navy-700 tracking-wide">Fanion Canon</span>
           </Link>
 
           {/* Navigation Desktop */}
