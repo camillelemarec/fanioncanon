@@ -40,9 +40,9 @@ const config: Config = {
         }
       },
       fontFamily: {
-        'serif': ['Playfair Display', 'serif'],
-        'sans': ['Inter', 'sans-serif'],
-        'logo': ['Playfair Display', 'serif'], // Police pour le logo
+        'sans': ['League Spartan', 'system-ui', 'sans-serif'],
+        'heading': ['League Spartan', 'system-ui', 'sans-serif'],
+        'logo': ['League Spartan', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

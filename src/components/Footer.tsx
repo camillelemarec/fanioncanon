@@ -31,7 +31,7 @@ export default function Footer() {
 
           {/* Liens Rapides */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Liens Rapides</h3>
+            <h3 className="text-lg font-semibold mb-4 font-heading">Liens Rapides</h3>
             <ul className="space-y-2">
               <li><a href="/boutique" className="text-gray-300 hover:text-accent-yellow transition-colors">Boutique</a></li>
               <li><a href="/notre-histoire" className="text-gray-300 hover:text-accent-yellow transition-colors">Notre Histoire</a></li>
@@ -42,7 +42,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4 font-heading">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent-yellow" />

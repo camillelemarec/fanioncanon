@@ -16,7 +16,7 @@ body {
   font-family: 'League Spartan', sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+h1, h2, h3, h4, h5, h6 { font-family: 'League Spartan', sans-serif; }
 
 .btn-primary { @apply bg-navy-700 hover:bg-navy-800 text-white font-medium py-3 px-6 rounded-lg transition; }
 .btn-secondary { @apply bg-accent-yellow hover:bg-accent-red text-white font-medium py-3 px-6 rounded-lg transition; }

@@ -48,7 +48,7 @@ export default function ProductPage() {
           {/* Infos produit */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-playfair text-navy-700">{product.name}</h1>
+              <h1 className="text-3xl font-heading text-navy-700">{product.name}</h1>
               <p className="text-2xl font-semibold text-navy-700 mt-2">{product.price}€</p>
             </div>
 

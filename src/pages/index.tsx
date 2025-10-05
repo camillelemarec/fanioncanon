@@ -52,7 +52,7 @@ export default function HomePage() {
                 <Image src={p.image} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="flex items-center justify-between mt-3">
-                <h3 className="font-playfair text-lg text-navy-700">{p.name}</h3>
+                <h3 className="font-heading text-lg text-navy-700">{p.name}</h3>
                 <span className="text-navy-700 font-semibold">{p.price}€</span>
               </div>
             </Link>
