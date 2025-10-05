@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
+// Note: no apiVersion pinned to avoid mismatch with deployed SDK
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '')
 
