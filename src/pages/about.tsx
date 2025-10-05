@@ -2,13 +2,40 @@ import Head from 'next/head'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen relative bg-neutral-50">
       <Head><title>À propos — Fanion Canon</title></Head>
-      {/* Banner visuelle si image disponible */}
-      <div className="absolute inset-0 -z-10 bg-neutral-50 md:bg-[url('/images/about-banner.jpg')] bg-cover bg-center opacity-30"></div>
+      {/* Mosaïque d'images en arrière-plan (lisible grâce au dégradé) */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="hidden md:grid grid-cols-3 gap-4 p-8 opacity-30">
+          <div className="relative h-[320px] rounded-lg overflow-hidden">
+            <Image src="/images/histoire1.jpg" alt="Histoire Fanion Canon 1" fill className="object-cover" />
+          </div>
+          <div className="relative h-[420px] rounded-lg overflow-hidden mt-12">
+            <Image src="/images/histoire2.jpg" alt="Histoire Fanion Canon 2" fill className="object-cover" />
+          </div>
+          <div className="relative h-[360px] rounded-lg overflow-hidden">
+            <Image src="/images/histoire3.jpg" alt="Histoire Fanion Canon 3" fill className="object-cover" />
+          </div>
+        </div>
+        {/* Version mobile simple */}
+        <div className="md:hidden grid grid-cols-2 gap-3 p-4 opacity-30">
+          <div className="relative h-40 rounded-lg overflow-hidden">
+            <Image src="/images/histoire1.jpg" alt="Histoire Fanion Canon 1" fill className="object-cover" />
+          </div>
+          <div className="relative h-40 rounded-lg overflow-hidden">
+            <Image src="/images/histoire2.jpg" alt="Histoire Fanion Canon 2" fill className="object-cover" />
+          </div>
+          <div className="relative h-40 rounded-lg overflow-hidden col-span-2">
+            <Image src="/images/histoire3.jpg" alt="Histoire Fanion Canon 3" fill className="object-cover" />
+          </div>
+        </div>
+        {/* Dégradé pour lisibilité du texte */}
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/90 via-neutral-50/90 to-neutral-50"></div>
+      </div>
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-16 text-gray-800">
         <motion.h1 initial={{opacity:0, y:8}} animate={{opacity:1, y:0}} transition={{duration:0.6}} className="text-4xl font-heading text-blue-900 text-center mb-10">
