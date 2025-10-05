@@ -10,7 +10,7 @@ export default function AboutPage() {
       <Head><title>À propos — Fanion Canon</title></Head>
       {/* Mosaïque d'images en arrière-plan (lisible grâce au dégradé) */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="hidden md:grid grid-cols-3 gap-4 p-8 opacity-30">
+        <div className="hidden md:grid grid-cols-3 gap-4 p-8 opacity-60">
           <div className="relative h-[320px] rounded-lg overflow-hidden">
             <Image src="/images/histoire1.jpg" alt="Histoire Fanion Canon 1" fill className="object-cover" />
           </div>
@@ -22,7 +22,7 @@ export default function AboutPage() {
           </div>
         </div>
         {/* Version mobile simple */}
-        <div className="md:hidden grid grid-cols-2 gap-3 p-4 opacity-30">
+        <div className="md:hidden grid grid-cols-2 gap-3 p-4 opacity-60">
           <div className="relative h-40 rounded-lg overflow-hidden">
             <Image src="/images/histoire1.jpg" alt="Histoire Fanion Canon 1" fill className="object-cover" />
           </div>
@@ -34,7 +34,7 @@ export default function AboutPage() {
           </div>
         </div>
         {/* Dégradé pour lisibilité du texte */}
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/90 via-neutral-50/90 to-neutral-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-neutral-50/70 via-neutral-50/60 to-neutral-50/80"></div>
       </div>
       <Header />
       <main className="max-w-3xl mx-auto px-4 py-16 text-gray-800">
