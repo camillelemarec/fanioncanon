@@ -1,5 +1,8 @@
 import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
-import { LogoSimple } from './Logo';
+import Image from 'next/image';
+import { League_Spartan } from 'next/font/google';
+
+const league = League_Spartan({ subsets: ['latin'], weight: ['700'] });
 
 export default function Footer() {
   return (
@@ -8,8 +11,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo et Description */}
           <div className="col-span-1 md:col-span-2">
-            <div className="mb-4">
-              <LogoSimple size="lg" className="text-white" />
+            <div className={`flex items-center gap-3 mb-4 ${league.className}`}>
+              <Image src="/images/logo.png" alt="Logo Fanion Canon" width={48} height={48} className="object-contain" />
+              <span className="text-2xl font-bold tracking-wide">Fanion Canon</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
               Affichez vos couleurs, stylisez votre région. Des fanions décoratifs haut de gamme 

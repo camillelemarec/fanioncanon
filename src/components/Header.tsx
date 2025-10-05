@@ -23,11 +23,11 @@ export default function Header() {
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo + Titre (gauche) */}
           <Link href="/" className={`flex items-center gap-3 ${league.className}`}>
-            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={56} height={56} className="object-contain" />
-            <span className="text-2xl font-bold text-navy-700 tracking-wide">Fanion Canon</span>
+            <Image src="/images/logo.png" alt="Logo Fanion Canon" width={64} height={64} className="object-contain" />
+            <span className="text-3xl font-bold text-navy-700 tracking-wide">Fanion Canon</span>
           </Link>
 
           {/* Navigation Desktop */}
