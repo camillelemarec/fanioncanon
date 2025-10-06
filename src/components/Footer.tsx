@@ -20,7 +20,7 @@ export default function Footer() {
               pour exprimer votre attachement régional avec style et élégance.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-accent-yellow transition-colors">
+              <a href="https://www.instagram.com/fanioncanon/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fanion Canon" className="text-gray-300 hover:text-accent-yellow transition-colors">
                 <Instagram className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-300 hover:text-accent-yellow transition-colors">
