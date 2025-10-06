@@ -4,14 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Menu, X } from 'lucide-react';
-import { useCart } from '@/contexts/CartContext';
+import { useCartShopify } from '@/context/CartContextShopify';
 import { League_Spartan } from 'next/font/google';
 
 const league = League_Spartan({ subsets: ['latin'], weight: ['700'] });
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { getTotalItems } = useCart();
+  const { cart, setOpen } = useCartShopify();
 
   const navigation = [
     { name: 'Accueil', href: '/' },
@@ -46,14 +46,14 @@ export default function Header() {
 
           {/* Panier et Menu Mobile */}
           <div className="flex items-center space-x-4">
-            <Link href="/cart" className="relative p-2 text-gray-700 hover:text-navy-700 transition-colors">
+            <button onClick={()=>setOpen(true)} className="relative p-2 text-gray-700 hover:text-navy-700 transition-colors">
               <ShoppingCart className="h-6 w-6" />
-              {getTotalItems() > 0 && (
+              {(cart?.totalQuantity ?? 0) > 0 && (
                 <span className="absolute -top-1 -right-1 bg-accent-red text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {getTotalItems()}
+                  {cart?.totalQuantity}
                 </span>
               )}
-            </Link>
+            </button>
 
             {/* rien côté droit (logo déplacé à gauche) */}
 
