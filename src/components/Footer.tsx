@@ -47,7 +47,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-accent-yellow" />
-                <span className="text-gray-300">contact@fanioncanon.fr</span>
+                <a href="mailto:fanioncanon@gmail.com" className="text-gray-300 hover:text-accent-yellow transition-colors">fanioncanon@gmail.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-accent-yellow" />
