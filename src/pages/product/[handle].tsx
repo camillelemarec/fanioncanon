@@ -62,7 +62,19 @@ export default function ProductPage({ product }: { product: any }) {
             </p>
 
             {/* CTA */}
-            <button onClick={async()=>{ await add(variantId,1); setOpen(true); }} className="px-5 py-3 rounded bg-blue-900 text-white hover:bg-blue-800 w-full sm:w-auto">
+            <button
+              onClick={async () => {
+                try {
+                  setOpen(true)
+                  await add(variantId, 1)
+                } catch (e) {
+                  // en cas d'erreur silencieuse, on garde une UX visible
+                  console.error('add to cart failed', e)
+                }
+              }}
+              className="px-5 py-3 rounded bg-blue-900 text-white hover:bg-blue-800 w-full sm:w-auto"
+              aria-label="Ajouter ce produit au panier"
+            >
               Ajouter au panier
             </button>
 

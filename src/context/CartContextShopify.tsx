@@ -18,8 +18,16 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
   const [open, setOpen] = useState(false)
   const [cartId, setCartId] = useState<string | undefined>()
 
+  function isValidCartId(id?: string | null) {
+    if (!id) return false
+    if (id === 'undefined') return false
+    return id.startsWith('gid://shopify/Cart/')
+  }
+
   useEffect(() => {
-    const id = localStorage.getItem('fc_cart_id') || undefined
+    const stored = localStorage.getItem('fc_cart_id') || undefined
+    const id = isValidCartId(stored) ? stored : undefined
+    if (!id && stored) localStorage.removeItem('fc_cart_id')
     setCartId(id)
     if (id)
       fetch(`/api/cart/get?id=${encodeURIComponent(id)}`)
@@ -29,13 +37,17 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
   }, [])
 
   async function ensureCart(): Promise<{ id: string }> {
-    if (cartId) return { id: cartId }
+    if (isValidCartId(cartId)) return { id: cartId as string }
     const c = await fetch('/api/cart/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
     }).then((r) => r.json())
-    localStorage.setItem('fc_cart_id', c.id)
+    if (isValidCartId(c?.id)) {
+      localStorage.setItem('fc_cart_id', c.id)
+    } else {
+      localStorage.removeItem('fc_cart_id')
+    }
     setCartId(c.id)
     setCart(c)
     return { id: c.id }
@@ -84,5 +96,6 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
 }
 
 export const useCartShopify = () => useContext(CartContext)
+
 
 
