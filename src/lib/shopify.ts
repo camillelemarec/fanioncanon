@@ -18,4 +18,28 @@ export async function shopifyFetch<T>(query: string, variables?: Record<string, 
   return j.data
 }
 
+export const CART_FIELDS = `
+  id
+  totalQuantity
+  checkoutUrl
+  cost: estimatedCost { subtotalAmount { amount currencyCode } totalAmount { amount currencyCode } }
+  lines(first: 50) {
+    edges {
+      node {
+        id
+        quantity
+        merchandise {
+          ... on ProductVariant {
+            id
+            title
+            price { amount currencyCode }
+            image { url altText }
+            product { title handle }
+          }
+        }
+      }
+    }
+  }
+`
+
 
