@@ -5,11 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, ChevronRight, ShoppingCart, Star } from 'lucide-react';
 import { products } from '@/lib/data';
-import { useCart } from '@/contexts/CartContext';
 
 export default function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const { addToCart } = useCart();
   
   const heroImages = [
     {
@@ -122,7 +120,6 @@ export default function HeroSection() {
 
 export function FeaturedProducts() {
   const featuredProducts = products.filter(product => product.featured);
-  const { addToCart } = useCart();
 
   return (
     <section className="py-16 bg-cream-50">
@@ -168,13 +165,10 @@ export function FeaturedProducts() {
                     <span className="text-sm text-gray-500">4.8 (127 avis)</span>
                   </div>
                   
-                  <button 
-                    onClick={() => addToCart(product)}
-                    className="bg-navy-700 hover:bg-navy-800 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2"
-                  >
+                  <Link href={`/product/${product.id}`} className="bg-navy-700 hover:bg-navy-800 text-white px-4 py-2 rounded-lg transition-colors flex items-center space-x-2">
                     <ShoppingCart className="h-4 w-4" />
-                    <span>Ajouter</span>
-                  </button>
+                    <span>Voir</span>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -1,7 +1,9 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import dynamic from 'next/dynamic'
+const NoSSR = (c:any)=>dynamic(()=>Promise.resolve(c),{ssr:false})
 
-export default function Success() {
+function SuccessInner() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -13,5 +15,7 @@ export default function Success() {
     </div>
   )
 }
+
+export default NoSSR(SuccessInner)
 
 
