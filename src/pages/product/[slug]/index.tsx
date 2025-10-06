@@ -52,8 +52,9 @@ export default function ProductPage() {
               <p className="text-2xl font-semibold text-navy-700 mt-2">{product.price}€</p>
             </div>
 
-            <p className="text-gray-600">
-              Un fanion inspiré du bleu méditerranéen, fabriqué avec soin, symbole d'appartenance et de style.
+            <p className="text-gray-700 leading-relaxed">
+              Notre‑Dame veille sur ce fanion et sur le Vieux‑Port. Avec tous ces bateaux, on s’y perd…
+              au moins avec lui, c’est sûr, ce sera toi le plus beau des bateaux.
             </p>
 
             <div className="flex items-center gap-4">
@@ -73,15 +74,7 @@ export default function ProductPage() {
               <div className="flex items-center gap-2"><Sailboat className="h-4 w-4 text-navy-700" /> Toile de voile robuste, adaptée à tous les bateaux</div>
             </div>
 
-            {/* Fiche descriptive au lieu des emojis */}
-            <div className="pt-4">
-              <h2 className="font-heading text-navy-700 mb-2">Détails du produit</h2>
-              <ul className="list-disc pl-5 text-gray-700 space-y-1">
-                <li>Fabrication française</li>
-                <li>Dimensions: 28 × 30 cm</li>
-                <li>Toile de voile de qualité, tenue parfaite à bord et en intérieur</li>
-              </ul>
-            </div>
+            {/* Détails supplémentaires supprimés pour éviter la redite */}
           </div>
         </div>
       </main>
