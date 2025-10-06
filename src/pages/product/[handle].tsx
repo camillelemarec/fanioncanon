@@ -62,13 +62,7 @@ export default function ProductPage({ product }: { product: any }) {
             </p>
 
             {/* CTA */}
-            <button
-              onClick={async () => {
-                await add(variantId, 1)
-                setOpen(true)
-              }}
-              className="px-5 py-3 rounded bg-blue-900 text-white hover:bg-blue-800 w-full sm:w-auto"
-            >
+            <button onClick={async()=>{ await add(variantId,1); setOpen(true); }} className="px-5 py-3 rounded bg-blue-900 text-white hover:bg-blue-800 w-full sm:w-auto">
               Ajouter au panier
             </button>
 
