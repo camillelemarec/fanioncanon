@@ -45,3 +45,4 @@ export default function Shop({ products }: { products: Product[] }) {
 }
 
 
+
