@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { shopifyFetch } from '@/lib/shopify'
@@ -27,6 +28,10 @@ export default function ProductPage({ product }: { product: any }) {
 
   return (
     <div className="min-h-screen bg-white">
+      <Head>
+        <title>{product.title} — Fanion Canon</title>
+        <meta name="description" content={product.description ?? `${product.title} par Fanion Canon`} />
+      </Head>
       <Header />
       <main className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid gap-12 md:grid-cols-2">
