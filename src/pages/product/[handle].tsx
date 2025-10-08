@@ -26,6 +26,19 @@ export default function ProductPage({ product }: { product: any }) {
   const price = Number(product.variants.edges[0].node.price.amount).toFixed(2)
   const { add, setOpen } = useCartShopify()
 
+  // Descriptions localisées par produit (ton Fanion Canon)
+  const defaultDescription =
+    'Notre‑Dame veille sur ce fanion et sur le Vieux‑Port. Avec tous ces bateaux, on s’y perd… au moins avec lui, c’est sûr, ce sera toi le plus beau des bateaux.'
+  const descriptions: Record<string, string> = {
+    'Fanion Cassis':
+      'L’eau est fraîche à Cassis, mais avec un fanion comme celui‑là, ton bateau sera le plus chaud du port. Entre les calanques et les apéros en mer, impossible de passer inaperçu.',
+    'Fanion Montpellier':
+      'Ici, le soleil tape fort, les cigales chantent et même les bateaux ont du style. Avec ce fanion, ton embarcation aura l’accent du Sud et le charme de la Comédie.',
+    'Fanion Arcachon':
+      'Avec un fanion comme ça, ton bateau sera aussi beau que celui de Max Cantara. Entre la Dune du Pilat et les huîtres du bassin, il ne manquait plus que ton pavillon pour parfaire le décor.',
+  }
+  const productDescription: string = descriptions[product.title] ?? defaultDescription
+
   return (
     <div className="min-h-screen bg-white">
       <Head>
@@ -60,11 +73,8 @@ export default function ProductPage({ product }: { product: any }) {
               <p className="text-2xl font-semibold text-navy-700 mt-2">{price} €</p>
             </div>
 
-            {/* Description courte, ton "À propos" */}
-            <p className="text-gray-700 leading-relaxed">
-              Notre‑Dame veille sur ce fanion et sur le Vieux‑Port. Avec tous ces bateaux, on s’y perd…
-              au moins avec lui, c’est sûr, ce sera toi le plus beau des bateaux.
-            </p>
+            {/* Description courte localisée */}
+            <p className="text-gray-700 leading-relaxed">{productDescription}</p>
 
             {/* CTA */}
             <button
