@@ -34,8 +34,15 @@ public/images/*.jpeg
 public/images/*.png
 public/images/*.webp
 
-# Autoriser deux visuels du hero (le reste reste ignoré)
+# Autoriser visuels nécessaires (hero + produits)
 !public/images/page1.jpeg
 !public/images/page12.jpeg
+!public/images/logo.png
+!public/images/histoire1.jpg
+!public/images/histoire2.jpg
+!public/images/histoire3.jpg
+!public/images/fanioncassis.png
+!public/images/fanionmontpellier.png
+!public/images/fanionarcachon.png
 
 
