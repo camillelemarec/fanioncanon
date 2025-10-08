@@ -24,7 +24,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Fanion Canon — Boutique de fanions régionaux</title>
+        <title>Fanion Canon — Fanions décoratifs marins, made in France</title>
+        <meta name="description" content="Fanion Canon crée des fanions décoratifs inspirés des ports et régions françaises. Style marin, branché et élégant." />
+        <link rel="canonical" href="https://fanioncanon.com/" />
+        <meta property="og:title" content="Fanion Canon — Fanions décoratifs marins" />
+        <meta property="og:description" content="Fanions décoratifs inspirés des ports et régions françaises. Made in France, esprit marin et régional." />
       </Head>
       <Header />
 

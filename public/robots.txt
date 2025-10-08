@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /checkout/
+
+Sitemap: https://fanioncanon.com/sitemap.xml
+
+

@@ -42,8 +42,22 @@ export default function ProductPage({ product }: { product: any }) {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>{product.title} — Fanion Canon</title>
-        <meta name="description" content={product.description ?? `${product.title} par Fanion Canon`} />
+        <title>
+          {product.title === 'Fanion Cassis'
+            ? 'Fanion Canon Cassis – Esprit méditerranéen et déco marine'
+            : product.title === 'Fanion Montpellier'
+            ? 'Fanion Canon Montpellier – Élégance du Sud sur ton bateau'
+            : product.title === 'Fanion Arcachon'
+            ? 'Fanion Canon Arcachon – Style du bassin et authenticité'
+            : 'Fanion Canon Marseille – Fanion décoratif nautique français'}
+        </title>
+        <meta
+          name="description"
+          content={product.description ?? `${product.title} par Fanion Canon`}
+        />
+        <link rel="canonical" href={`https://fanioncanon.com/product/${product.handle}`} />
+        <meta property="og:title" content={`${product.title} — Fanion Canon`} />
+        <meta property="og:description" content={product.description ?? product.title} />
       </Head>
       <Header />
       <main className="max-w-7xl mx-auto px-6 py-12">

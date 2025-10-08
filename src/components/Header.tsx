@@ -32,7 +32,7 @@ export default function Header() {
           </Link>
 
           {/* Navigation Desktop */}
-          <nav className="hidden md:flex space-x-8">
+              <nav className="hidden md:flex space-x-8" aria-label="Navigation principale">
             {navigation.map((item) => (
               <Link
                 key={item.name}
