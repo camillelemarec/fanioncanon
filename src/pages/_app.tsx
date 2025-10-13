@@ -25,10 +25,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:description" content={DEFAULT_DESCRIPTION} />
         <meta name="twitter:image" content={`${SITE_URL}/images/logo.png`} />
         <link rel="canonical" href={SITE_URL} />
-        <link rel="icon" href="/images/logo.png" type="image/png" sizes="64x64" />
-        <link rel="icon" href="/images/logo.png" type="image/png" sizes="32x32" />
-        <link rel="icon" href="/images/logo.png" type="image/png" sizes="16x16" />
-        <link rel="apple-touch-icon" href="/images/logo.png" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Organization',
