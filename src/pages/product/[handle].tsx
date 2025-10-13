@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { shopifyFetch } from '@/lib/shopify'
@@ -90,6 +91,19 @@ export default function ProductPage({ product }: { product: any }) {
                 </>
               )}
             </div>
+            {gallery.length > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-2">
+                {gallery.map((_, i) => (
+                  <button
+                    key={i}
+                    aria-label={`Aller à l'image ${i + 1}`}
+                    aria-current={i === current ? 'true' : undefined}
+                    onClick={() => setCurrent(i)}
+                    className={`${i === current ? 'bg-navy-700' : 'bg-gray-300'} h-2.5 w-2.5 rounded-full`}
+                  />
+                ))}
+              </div>
+            )}
             {product.images.edges.length > 1 && (
               <div className="grid grid-cols-3 gap-3">
                 {gallery.slice(0, 3).map((g, i) => (
@@ -152,6 +166,13 @@ export default function ProductPage({ product }: { product: any }) {
               </div>
             </div>
           </div>
+        </div>
+        {/* Callout bas de page */}
+        <div className="mt-16 rounded-lg bg-cream-50 border border-gray-200 p-8 text-center">
+          <p className="text-lg font-heading text-navy-700">Le vent du large, signé Fanion Canon</p>
+          <Link href="/about" className="inline-block mt-4 px-5 py-3 rounded bg-navy-700 text-white hover:bg-navy-800">
+            À propos
+          </Link>
         </div>
       </main>
       <Footer />
