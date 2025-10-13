@@ -31,6 +31,7 @@ export default function ProductPage({ product }: { product: any }) {
 
   // Liste d'images: Shopify + ajout local pour Marseille
   const gallery: { url: string; alt: string }[] = useMemo(() => {
+    // Toujours privilégier les images locales, ne pas afficher les visuels Shopify
     const localMainByTitle: Record<string, string> = {
       'Fanion Marseille': '/images/fanion1.png',
       'Fanion Montpellier': '/images/fanionmontpellier.png',
@@ -40,11 +41,7 @@ export default function ProductPage({ product }: { product: any }) {
     const localMain = localMainByTitle[product.title]
     const items: { url: string; alt: string }[] = []
     if (localMain) items.push({ url: localMain, alt: product.title })
-    // Ajoute ensuite les images Shopify
-    for (const e of product.images.edges) {
-      items.push({ url: e.node.url as string, alt: (e.node.altText as string) ?? product.title })
-    }
-    // Ajoute une seconde image locale pour Marseille
+    // Marseille: ajouter une seconde image locale
     if (product.title === 'Fanion Marseille') {
       items.push({ url: '/images/fanion1-2.JPG', alt: `${product.title} (visuel 2)` })
     }

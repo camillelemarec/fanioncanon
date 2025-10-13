@@ -25,13 +25,19 @@ export default function Shop({ products }: { products: Product[] }) {
         <h1 className="text-3xl font-heading font-semibold text-center mb-10 text-blue-900">Nos fanions</h1>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {products.map((p) => {
-            const img = p.images.edges[0]?.node
+            // Forcer l'image locale correspondant au titre du produit
+            const title = p.title
+            const localByTitle: Record<string, string> = {
+              'Fanion Marseille': '/images/fanion1.png',
+              'Fanion Montpellier': '/images/fanionmontpellier.png',
+              'Fanion Arcachon': '/images/fanionarcachon.png',
+              'Fanion Cassis': '/images/fanioncassis.png',
+            }
+            const localSrc = localByTitle[title]
             const price = Number(p.priceRange.minVariantPrice.amount).toFixed(2)
             return (
               <Link key={p.id} href={`/product/${p.handle}`} className="block text-center group">
-                {img && (
-                  <img src={img.url} alt={img.altText ?? p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
-                )}
+                <img src={localSrc ?? p.images.edges[0]?.node?.url} alt={p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
                 <h2 className="mt-3 text-lg font-medium">{p.title}</h2>
                 <p className="text-gray-600">{price} €</p>
               </Link>
