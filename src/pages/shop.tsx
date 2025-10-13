@@ -12,7 +12,7 @@ type Product = {
 }
 
 export async function getStaticProps() {
-  const q = `query { products(first: 24) { edges { node { id handle title images(first:1){edges{node{url altText}}} priceRange{ minVariantPrice{ amount } } } } } }`
+  const q = `query { products(first: 24) { edges { node { id handle title images(first:2){edges{node{url altText}}} priceRange{ minVariantPrice{ amount } } } } } }`
   const data = await shopifyFetch<{ products: { edges: { node: Product }[] } }>(q)
   return { props: { products: data.products.edges.map((e) => e.node) }, revalidate: 60 }
 }

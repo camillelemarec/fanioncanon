@@ -13,6 +13,7 @@ export default function HomePage() {
   const heroImages = [
     '/images/page1.jpeg',
     '/images/page12.jpeg',
+    '/images/histoire2.jpg',
   ]
   const [current, setCurrent] = useState(0)
 

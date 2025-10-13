@@ -4,7 +4,8 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { shopifyFetch } from '@/lib/shopify'
 import { useCartShopify } from '@/context/CartContextShopify'
-import { BadgeCheck, Ruler, Sailboat } from 'lucide-react'
+import { BadgeCheck, Ruler, Sailboat, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useMemo, useState } from 'react'
 
 export async function getStaticPaths() {
   const q = `query { products(first:50){edges{node{handle}}} }`
@@ -25,6 +26,16 @@ export default function ProductPage({ product }: { product: any }) {
   const variantId = product.variants.edges[0].node.id
   const price = Number(product.variants.edges[0].node.price.amount).toFixed(2)
   const { add, setOpen } = useCartShopify()
+  const [current, setCurrent] = useState(0)
+
+  // Liste d'images: Shopify + ajout local pour Marseille
+  const gallery: { url: string; alt: string }[] = useMemo(() => {
+    const base = product.images.edges.map((e: any) => ({ url: e.node.url as string, alt: (e.node.altText as string) ?? product.title }))
+    if (product.title === 'Fanion Marseille') {
+      base.push({ url: '/images/fanion1-2.JPG', alt: `${product.title} (visuel 2)` })
+    }
+    return base
+  }, [product])
 
   // Descriptions localisées par produit (ton Fanion Canon)
   const defaultDescription =
@@ -64,17 +75,27 @@ export default function ProductPage({ product }: { product: any }) {
         <div className="grid gap-12 md:grid-cols-2">
           {/* Visuels produit */}
           <div className="space-y-4">
-            <div className="bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center h-96">
-              {img && (
-                <img src={img.url} alt={img.altText ?? product.title} className="max-h-full object-contain" />
+            <div className="bg-white rounded-lg overflow-hidden shadow-sm flex items-center justify-center h-96 relative">
+              {gallery.length > 0 && (
+                <img src={gallery[current].url} alt={gallery[current].alt} className="max-h-full object-contain" />
+              )}
+              {gallery.length > 1 && (
+                <>
+                  <button aria-label="Image précédente" className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow" onClick={() => setCurrent((i) => (i - 1 + gallery.length) % gallery.length)}>
+                    <ChevronLeft className="h-5 w-5 text-navy-700" />
+                  </button>
+                  <button aria-label="Image suivante" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow" onClick={() => setCurrent((i) => (i + 1) % gallery.length)}>
+                    <ChevronRight className="h-5 w-5 text-navy-700" />
+                  </button>
+                </>
               )}
             </div>
             {product.images.edges.length > 1 && (
               <div className="grid grid-cols-3 gap-3">
-                {product.images.edges.slice(1, 4).map((edge: any, i: number) => (
-                  <div key={i} className="bg-white rounded-lg overflow-hidden h-28 flex items-center justify-center">
-                    <img src={edge.node.url} alt={edge.node.altText ?? product.title} className="max-h-full object-contain" />
-                  </div>
+                {gallery.slice(0, 3).map((g, i) => (
+                  <button key={i} className="bg-white rounded-lg overflow-hidden h-28 flex items-center justify-center" onClick={() => setCurrent(i)} aria-label={`Voir l'image ${i+1}`}>
+                    <img src={g.url} alt={g.alt} className="max-h-full object-contain" />
+                  </button>
                 ))}
               </div>
             )}
@@ -126,8 +147,7 @@ export default function ProductPage({ product }: { product: any }) {
               <div className="flex items-start gap-2">
                 <Sailboat className="h-5 w-5 text-navy-700" />
                 <div>
-                  <div className="font-medium text-navy-700">Toile de voile</div>
-                  <div className="text-sm text-gray-600">Parfait à bord et en intérieur</div>
+                  <div className="font-medium text-navy-700">Fait avec amour, beaucoup d'amour</div>
                 </div>
               </div>
             </div>
