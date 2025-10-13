@@ -31,11 +31,24 @@ export default function ProductPage({ product }: { product: any }) {
 
   // Liste d'images: Shopify + ajout local pour Marseille
   const gallery: { url: string; alt: string }[] = useMemo(() => {
-    const base = product.images.edges.map((e: any) => ({ url: e.node.url as string, alt: (e.node.altText as string) ?? product.title }))
-    if (product.title === 'Fanion Marseille') {
-      base.push({ url: '/images/fanion1-2.JPG', alt: `${product.title} (visuel 2)` })
+    const localMainByTitle: Record<string, string> = {
+      'Fanion Marseille': '/images/fanion1.png',
+      'Fanion Montpellier': '/images/fanionmontpellier.png',
+      'Fanion Arcachon': '/images/fanionarcachon.png',
+      'Fanion Cassis': '/images/fanioncassis.png',
     }
-    return base
+    const localMain = localMainByTitle[product.title]
+    const items: { url: string; alt: string }[] = []
+    if (localMain) items.push({ url: localMain, alt: product.title })
+    // Ajoute ensuite les images Shopify
+    for (const e of product.images.edges) {
+      items.push({ url: e.node.url as string, alt: (e.node.altText as string) ?? product.title })
+    }
+    // Ajoute une seconde image locale pour Marseille
+    if (product.title === 'Fanion Marseille') {
+      items.push({ url: '/images/fanion1-2.JPG', alt: `${product.title} (visuel 2)` })
+    }
+    return items
   }, [product])
 
   // Descriptions localisées par produit (ton Fanion Canon)
@@ -104,7 +117,7 @@ export default function ProductPage({ product }: { product: any }) {
                 ))}
               </div>
             )}
-            {product.images.edges.length > 1 && (
+            {gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-3">
                 {gallery.slice(0, 3).map((g, i) => (
                   <button key={i} className="bg-white rounded-lg overflow-hidden h-28 flex items-center justify-center" onClick={() => setCurrent(i)} aria-label={`Voir l'image ${i+1}`}>
