@@ -167,12 +167,16 @@ export default function ProductPage({ product }: { product: any }) {
             </div>
           </div>
         </div>
-        {/* Callout bas de page */}
-        <div className="mt-16 rounded-lg bg-cream-50 border border-gray-200 p-8 text-center">
-          <p className="text-lg font-heading text-navy-700">Le vent du large, signé Fanion Canon</p>
-          <Link href="/about" className="inline-block mt-4 px-5 py-3 rounded bg-navy-700 text-white hover:bg-navy-800">
-            À propos
-          </Link>
+        {/* Callout bas de page avec bannière */}
+        <div className="mt-16 relative rounded-lg overflow-hidden">
+          <img src="/images/banniere.png" alt="Fond marin Fanion Canon" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/25" />
+          <div className="relative p-8 text-center">
+            <p className="text-lg font-heading text-white drop-shadow">Le vent du large, signé Fanion Canon</p>
+            <Link href="/about" className="inline-block mt-4 px-5 py-3 rounded bg-white/90 text-navy-700 hover:bg-white">
+              À propos
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />
