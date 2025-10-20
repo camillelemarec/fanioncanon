@@ -10,7 +10,7 @@ export default function RetoursRemboursements() {
 
         <section className="space-y-4">
           <h2 className="text-2xl font-heading text-navy-700">Conditions d’éligibilité</h2>
-          <p>L’article doit être dans son état d’origine, non porté, non lavé, avec étiquette, et retourné dans son emballage initial. Le reçu ou la preuve d’achat est obligatoire.</p>
+          <p>L’article doit être dans son état d’origine, non utilisé, avec étiquette, et retourné dans son emballage initial. Le reçu ou la preuve d’achat est obligatoire.</p>
 
           <h2 className="text-2xl font-heading text-navy-700">Procédure</h2>
           <p>Contactez‑nous à fanioncanon@gmail.com pour valider le retour. Renvoyez votre colis à : Fanion Canon – Coach&Vous, 20 Traverse du Croissant Doré, 13014 Marseille. Les frais de retour sont à la charge du client.</p>
