@@ -16,8 +16,8 @@ export default function Footer() {
               <span className="text-2xl font-bold tracking-wide">Fanion Canon</span>
             </div>
             <p className="text-gray-300 mb-6 max-w-md">
-              Affichez vos couleurs, stylisez votre région. Des fanions décoratifs haut de gamme 
-              pour exprimer votre attachement régional avec style et élégance.
+              Affichez vos couleurs, stylisez votre région. Des fanions de bateau décoratifs haut de gamme
+              pour exprimer votre attachement régional avec style et élégance. Le vent du large, signé Fanion canon
             </p>
             <div className="flex space-x-4">
               <a href="https://www.instagram.com/fanioncanon/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Fanion Canon" className="text-gray-300 hover:text-accent-yellow transition-colors">
