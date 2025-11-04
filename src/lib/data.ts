@@ -57,6 +57,20 @@ export const products: Product[] = [
     featured: true,
     inStock: true,
   },
+  {
+    id: 'fanion-touquet',
+    name: 'Fanion Touquet',
+    region: 'Le Touquet',
+    price: 22,
+    description: 'À l’ombre des pins ou au bord de la Canche, ce fanion respire les week-ends chics du Touquet. Entre l’Impasse, l’enduro et les chars à voile, ton bateau a trouvé sa station balnéaire.',
+    image: '/images/faniontouquet.png',
+    images: ['/images/faniontouquet.png'],
+    material: 'Toile de voile',
+    dimensions: '28 × 30 cm',
+    category: 'city',
+    featured: true,
+    inStock: true,
+  },
 ];
 
 export const regions: Region[] = [

@@ -32,6 +32,7 @@ export default function Shop({ products }: { products: Product[] }) {
               'Fanion Montpellier': '/images/fanionmontpellier.png',
               'Fanion Arcachon': '/images/fanionarcachon.png',
               'Fanion Cassis': '/images/fanioncassis.png',
+              'Fanion Touquet': '/images/faniontouquet.png',
             }
             const localSrc = localByTitle[title]
             const price = Number(p.priceRange.minVariantPrice.amount).toFixed(2)

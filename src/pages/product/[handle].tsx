@@ -37,6 +37,7 @@ export default function ProductPage({ product }: { product: any }) {
       'Fanion Montpellier': '/images/fanionmontpellier.png',
       'Fanion Arcachon': '/images/fanionarcachon.png',
       'Fanion Cassis': '/images/fanioncassis.png',
+      'Fanion Touquet': '/images/faniontouquet.png',
     }
     const localMain = localMainByTitle[product.title]
     const items: { url: string; alt: string }[] = []
@@ -58,6 +59,8 @@ export default function ProductPage({ product }: { product: any }) {
       'Ici, le soleil tape fort, les cigales chantent et même les bateaux ont du style. Avec ce fanion, ton embarcation aura l’accent du Sud et le charme de la Comédie.',
     'Fanion Arcachon':
       'Avec un fanion comme ça, ton bateau sera aussi beau que celui de Max Cantara. Entre la Dune du Pilat et les huîtres du bassin, il ne manquait plus que ton pavillon pour parfaire le décor.',
+    'Fanion Touquet':
+      'À l’ombre des pins ou au bord de la Canche, ce fanion respire les week‑ends chics du Touquet. Entre l’Impasse, l’enduro et les chars à voile, ton bateau a trouvé sa station balnéaire.',
   }
   const productDescription: string = descriptions[product.title] ?? defaultDescription
 
