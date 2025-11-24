@@ -41,7 +41,7 @@ export const products: Product[] = [
     dimensions: '28 × 30 cm',
     category: 'city',
     featured: true,
-    inStock: true,
+    inStock: false,
   },
   {
     id: 'fanion-arcachon',

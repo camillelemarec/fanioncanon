@@ -93,6 +93,11 @@ export default function ProductPage({ product }: { product: any }) {
               {gallery.length > 0 && (
                 <img src={gallery[current].url} alt={gallery[current].alt} className="max-h-full object-contain" />
               )}
+              {product.title === 'Fanion Montpellier' && (
+                <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-semibold px-2 py-1 rounded">
+                  précommande
+                </span>
+              )}
               {gallery.length > 1 && (
                 <>
                   <button aria-label="Image précédente" className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow" onClick={() => setCurrent((i) => (i - 1 + gallery.length) % gallery.length)}>
@@ -133,6 +138,9 @@ export default function ProductPage({ product }: { product: any }) {
             <div>
               <h1 className="text-3xl font-heading text-blue-900">{product.title}</h1>
               <p className="text-2xl font-semibold text-navy-700 mt-2">{price} €</p>
+              {product.title === 'Fanion Montpellier' && (
+                <p className="text-sm text-gray-600 mt-1">* Bientôt de retour</p>
+              )}
             </div>
 
             {/* Description courte localisée */}

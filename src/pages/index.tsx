@@ -55,11 +55,19 @@ export default function HomePage() {
             <Link key={p.id} href={`/product/${p.id}`} className="group block">
               <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
                 <Image src={p.image} alt={p.name} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                {p.id === 'fanion-montpellier' && (
+                  <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-semibold px-2 py-1 rounded">
+                    précommande
+                  </span>
+                )}
               </div>
               <div className="flex items-center justify-between mt-3">
                 <h3 className="font-heading text-lg text-navy-700">{p.name}</h3>
                 <span className="text-navy-700 font-semibold">{p.price}€</span>
               </div>
+              {p.id === 'fanion-montpellier' && (
+                <p className="text-sm text-gray-600 mt-1">* Bientôt de retour</p>
+              )}
             </Link>
           ))}
         </div>

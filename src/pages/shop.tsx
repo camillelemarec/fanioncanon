@@ -38,7 +38,14 @@ export default function Shop({ products }: { products: Product[] }) {
             const price = Number(p.priceRange.minVariantPrice.amount).toFixed(2)
             return (
               <Link key={p.id} href={`/product/${p.handle}`} className="block text-center group">
-                <img src={localSrc ?? p.images.edges[0]?.node?.url} alt={p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
+                <div className="relative">
+                  <img src={localSrc ?? p.images.edges[0]?.node?.url} alt={p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
+                  {(p.handle === 'fanion-montpellier' || p.title === 'Fanion Montpellier') && (
+                    <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-semibold px-2 py-1 rounded">
+                      précommande
+                    </span>
+                  )}
+                </div>
                 <h2 className="mt-3 text-lg font-medium">{p.title}</h2>
                 <p className="text-gray-600">{price} €</p>
               </Link>
