@@ -18,13 +18,24 @@ export async function getStaticProps() {
 }
 
 export default function Shop({ products }: { products: Product[] }) {
+  const orderByHandle: Record<string, number> = {
+    'fanion-marseille': 0,
+    'fanion-cassis': 1,
+    'fanion-arcachon': 2,
+    'fanion-touquet': 3,
+    'fanion-montpellier': 4,
+  }
+  const orderedProducts = [...products].sort(
+    (a, b) => (orderByHandle[a.handle] ?? Number.MAX_SAFE_INTEGER) - (orderByHandle[b.handle] ?? Number.MAX_SAFE_INTEGER)
+  )
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <main className="max-w-5xl mx-auto px-6 py-12">
         <h1 className="text-3xl font-heading font-semibold text-center mb-10 text-blue-900">Nos fanions</h1>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {products.map((p) => {
+          {orderedProducts.map((p) => {
             // Forcer l'image locale correspondant au titre du produit
             const title = p.title
             const localByTitle: Record<string, string> = {
