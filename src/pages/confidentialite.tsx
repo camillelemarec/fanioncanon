@@ -1,12 +1,24 @@
+import Head from 'next/head'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { absoluteUrl } from '@/lib/seo'
 
 export default function Confidentialite() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <main className="max-w-3xl mx-auto px-4 py-12 text-gray-700">
-        <h1 className="text-3xl font-heading text-navy-700 text-center mb-8">Politique de confidentialité</h1>
+    <>
+      <Head>
+        <title>Politique de confidentialité — Fanion Canon</title>
+        <meta
+          name="description"
+          content="Découvrez comment Fanion Canon collecte et protège vos données personnelles lors de vos achats en ligne."
+        />
+        <meta name="robots" content="noindex,follow" />
+        <link rel="canonical" href={absoluteUrl('/confidentialite')} key="canonical" />
+      </Head>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <main className="max-w-3xl mx-auto px-4 py-12 text-gray-700">
+          <h1 className="text-3xl font-heading text-navy-700 text-center mb-8">Politique de confidentialité</h1>
 
         <section className="space-y-4">
           <h2 className="text-2xl font-heading text-navy-700">1. Responsable du traitement</h2>
@@ -34,9 +46,10 @@ export default function Confidentialite() {
           <h2 className="text-2xl font-heading text-navy-700">8. Hébergement</h2>
           <p>Les données sont stockées de manière sécurisée sur les serveurs de Shopify et Vercel.</p>
         </section>
-      </main>
-      <Footer />
-    </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 

@@ -24,10 +24,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="twitter:title" content="Fanion Canon — Fanions décoratifs marins" />
         <meta name="twitter:description" content={DEFAULT_DESCRIPTION} />
         <meta name="twitter:image" content={`${SITE_URL}/images/logo.png`} />
-        <link rel="canonical" href={SITE_URL} />
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/favicon.png" />
+        <link rel="canonical" href={SITE_URL} key="canonical" />
+        <link rel="icon" href="/images/Favicon512.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/images/Favicon512.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/images/Favicon512.png" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Organization',

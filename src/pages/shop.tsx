@@ -1,7 +1,9 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { shopifyFetch } from '@/lib/shopify'
+import { absoluteUrl } from '@/lib/seo'
 
 type Product = {
   id: string
@@ -18,6 +20,9 @@ export async function getStaticProps() {
 }
 
 export default function Shop({ products }: { products: Product[] }) {
+  const pageTitle = 'Boutique Fanion Canon — Fanions décoratifs made in France'
+  const pageDescription =
+    'Découvrez la boutique Fanion Canon : fanions décoratifs inspirés des ports français, réalisés en petites séries et expédiés depuis Marseille.'
   const orderByHandle: Record<string, number> = {
     'fanion-marseille': 0,
     'fanion-cassis': 1,
@@ -30,42 +35,56 @@ export default function Shop({ products }: { products: Product[] }) {
   )
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <main className="max-w-5xl mx-auto px-6 py-12">
-        <h1 className="text-3xl font-heading font-semibold text-center mb-10 text-blue-900">Nos fanions</h1>
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {orderedProducts.map((p) => {
-            // Forcer l'image locale correspondant au titre du produit
-            const title = p.title
-            const localByTitle: Record<string, string> = {
-              'Fanion Marseille': '/images/fanion1.png',
-              'Fanion Montpellier': '/images/fanionmontpellier.png',
-              'Fanion Arcachon': '/images/fanionarcachon.png',
-              'Fanion Cassis': '/images/fanioncassis.png',
-              'Fanion Touquet': '/images/faniontouquet.png',
-            }
-            const localSrc = localByTitle[title]
-            const price = Number(p.priceRange.minVariantPrice.amount).toFixed(2)
-            return (
-              <Link key={p.id} href={`/product/${p.handle}`} className="block text-center group">
-                <div className="relative">
-                  <img src={localSrc ?? p.images.edges[0]?.node?.url} alt={p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
-                  {(p.handle === 'fanion-montpellier' || p.title === 'Fanion Montpellier') && (
-                    <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-semibold px-2 py-1 rounded">
-                      précommande
-                    </span>
-                  )}
-                </div>
-                <h2 className="mt-3 text-lg font-medium">{p.title}</h2>
-                <p className="text-gray-600">{price} €</p>
-              </Link>
-            )
-          })}
-        </div>
-      </main>
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={absoluteUrl('/shop')} />
+        <link rel="canonical" href={absoluteUrl('/shop')} key="canonical" />
+      </Head>
+      <div className="min-h-screen bg-white">
+        <Header />
+        <main className="max-w-5xl mx-auto px-6 py-12">
+          <h1 className="text-3xl font-heading font-semibold text-center mb-10 text-blue-900">Nos fanions</h1>
+          <p className="text-center text-gray-600 max-w-3xl mx-auto mb-10">
+            Chaque fanion est imaginé à Marseille et sérigraphié en petite série pour rendre hommage aux plus beaux ports français.
+            Explore la collection et trouve la ville qui te ressemble.
+          </p>
+          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            {orderedProducts.map((p) => {
+              // Forcer l'image locale correspondant au titre du produit
+              const title = p.title
+              const localByTitle: Record<string, string> = {
+                'Fanion Marseille': '/images/fanion1.png',
+                'Fanion Montpellier': '/images/fanionmontpellier.png',
+                'Fanion Arcachon': '/images/fanionarcachon.png',
+                'Fanion Cassis': '/images/fanioncassis.png',
+                'Fanion Touquet': '/images/faniontouquet.png',
+              }
+              const localSrc = localByTitle[title]
+              const price = Number(p.priceRange.minVariantPrice.amount).toFixed(2)
+              return (
+                <Link key={p.id} href={`/product/${p.handle}`} className="block text-center group">
+                  <div className="relative">
+                    <img src={localSrc ?? p.images.edges[0]?.node?.url} alt={p.title} className="rounded-lg shadow-md transition-transform group-hover:scale-[1.02] mx-auto" />
+                    {(p.handle === 'fanion-montpellier' || p.title === 'Fanion Montpellier') && (
+                      <span className="absolute top-2 left-2 z-10 bg-blue-900 text-white text-xs font-semibold px-2 py-1 rounded">
+                        précommande
+                      </span>
+                    )}
+                  </div>
+                  <h2 className="mt-3 text-lg font-medium">{p.title}</h2>
+                  <p className="text-gray-600">{price} €</p>
+                </Link>
+              )
+            })}
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
 
