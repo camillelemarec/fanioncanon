@@ -17,7 +17,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   })
   const j = await r.json()
   const err = j?.data?.cartLinesAdd?.userErrors?.[0]
-  if (!r.ok || err) return res.status(500).json({ error: err?.message ?? 'cartLinesAdd failed' })
+  const gqlErr = j?.errors?.[0]
+  if (!r.ok || err || gqlErr || !j?.data?.cartLinesAdd?.cart) {
+    return res.status(500).json({ error: err?.message ?? gqlErr?.message ?? 'cartLinesAdd failed' })
+  }
   res.status(200).json(j.data.cartLinesAdd.cart)
 }
 
