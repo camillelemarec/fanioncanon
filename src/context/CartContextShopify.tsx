@@ -56,7 +56,7 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
       body: JSON.stringify({}),
     })
     if (isValidCartId(c?.id)) {
-      localStorage.setItem('fc_cart_id', c.id)
+      localStorage.setItem('fc_cart_id', c.id as string)
     } else {
       localStorage.removeItem('fc_cart_id')
     }
