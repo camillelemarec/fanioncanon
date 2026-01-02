@@ -56,13 +56,17 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
       body: JSON.stringify({}),
     })
     if (isValidCartId(c?.id)) {
-      localStorage.setItem('fc_cart_id', c.id as string)
+      const newId = c.id as string
+      localStorage.setItem('fc_cart_id', newId)
+      setCartId(newId)
+      setCart(c)
+      return { id: newId }
     } else {
       localStorage.removeItem('fc_cart_id')
+      setCartId(undefined)
+      setCart(null)
+      throw new Error('cart create failed: invalid id')
     }
-    setCartId(c.id)
-    setCart(c)
-    return { id: c.id }
   }
 
   async function add(variantId: string, quantity = 1) {
