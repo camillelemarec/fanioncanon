@@ -50,7 +50,7 @@ export function CartProviderShopify({ children }: { children: React.ReactNode })
 
   async function ensureCart(): Promise<{ id: string }> {
     if (isValidCartId(cartId)) return { id: cartId as string }
-    const c = await fetchJson('/api/cart/create', {
+    const c = await fetchJson<{ id?: string }>('/api/cart/create', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
