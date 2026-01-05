@@ -11,8 +11,9 @@ export default function HomePage() {
   const scrollToCatalog = () => catalogRef.current?.scrollIntoView({ behavior: 'smooth' })
 
   const heroImages = [
+    '/images/fanionpan.jpg',
+    '/images/fanionpan2.jpg',
     '/images/page1.jpeg',
-    '/images/page12.jpeg',
     '/images/histoire2.jpg',
   ]
   const [current, setCurrent] = useState(0)
