@@ -4,7 +4,7 @@ Site web moderne pour la vente de fanions décoratifs régionaux haut de gamme.
 
 ## 🎯 Objectifs
 
-- Vendre en ligne les fanions (prix 22€)
+- Vendre en ligne les fanions (prix 25€)
 - Créer une identité forte : produit déco régional, branché, symbole de style de vie
 - Valoriser l'univers : cool, chic, "j'appartiens à une communauté"
 - Développer une image haut de gamme accessible
