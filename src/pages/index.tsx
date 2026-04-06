@@ -5,6 +5,9 @@ import Footer from '@/components/Footer'
 import { products } from '@/lib/data'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Mansalva } from 'next/font/google'
+
+const mansalva = Mansalva({ subsets: ['latin'], weight: ['400'] })
 
 export default function HomePage() {
   const catalogRef = useRef<HTMLDivElement>(null)
@@ -42,7 +45,10 @@ export default function HomePage() {
             <div className="absolute inset-0 bg-black/30" />
           </div>
         ))}
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
+          <h1 className={`${mansalva.className} text-3xl sm:text-4xl text-white text-center drop-shadow-lg max-w-[600px] mx-auto px-4`}>
+            Un drapeau pour ton bateau
+          </h1>
           <button onClick={scrollToCatalog} className="backdrop-blur-sm/0 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full border border-white/50 transition">
             Découvrir la collection
           </button>

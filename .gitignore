@@ -51,3 +51,5 @@ public/images/*.webp
 !public/images/faniontouquet.png
 
 
+.vercel
+.env*.local
