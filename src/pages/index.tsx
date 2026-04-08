@@ -47,7 +47,7 @@ export default function HomePage() {
         ))}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-6">
           <h1 className={`${gasoek.className} text-3xl sm:text-4xl text-white text-center drop-shadow-lg max-w-[600px] mx-auto px-4`}>
-            Un drapeau pour ton bateau
+            Un drapeau pour ton bateau.
           </h1>
           <button onClick={scrollToCatalog} className="backdrop-blur-sm/0 bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-full border border-white/50 transition">
             Découvrir la collection
