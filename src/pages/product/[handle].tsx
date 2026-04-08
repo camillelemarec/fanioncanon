@@ -42,9 +42,11 @@ export default function ProductPage({ product }: { product: any }) {
     const localMain = localMainByTitle[product.title]
     const items: { url: string; alt: string }[] = []
     if (localMain) items.push({ url: localMain, alt: product.title })
-    // Marseille: ajouter une seconde image locale
     if (product.title === 'Fanion Marseille') {
       items.push({ url: '/images/fanion1-2.JPG', alt: `${product.title} (visuel 2)` })
+    }
+    if (product.title === 'Fanion Cassis') {
+      items.push({ url: '/images/89AAA756-37D1-42C7-8AEB-CF265583A5E2-82947-000009A9325379DA.jpg', alt: `${product.title} (visuel 2)` })
     }
     return items
   }, [product])

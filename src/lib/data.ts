@@ -22,7 +22,7 @@ export const products: Product[] = [
     price: 25,
     description: 'Cassis, ses falaises blanches et ses eaux turquoise. Un fanion au souffle méditerranéen, chic et marin.',
     image: '/images/fanioncassis.png',
-    images: ['/images/fanioncassis.png'],
+    images: ['/images/fanioncassis.png', '/images/89AAA756-37D1-42C7-8AEB-CF265583A5E2-82947-000009A9325379DA.jpg'],
     material: 'Toile de voile',
     dimensions: '28 × 30 cm',
     category: 'city',
