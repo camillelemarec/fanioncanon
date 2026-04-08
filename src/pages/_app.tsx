@@ -5,6 +5,7 @@ import '@/styles/globals.css'
 import { CartProviderShopify } from '@/context/CartContextShopify'
 import dynamic from 'next/dynamic'
 import { DEFAULT_DESCRIPTION, SITE_URL } from '@/lib/seo'
+import { Analytics } from '@vercel/analytics/react'
 const CartDrawer = dynamic(() => import('@/components/CartDrawer'), { ssr: false })
 
 const league = League_Spartan({ subsets: ['latin'], variable: '--font-league', weight: ['400','500','700'] })
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
         <CartDrawer />
       </CartProviderShopify>
+      <Analytics />
     </div>
   )
 }
