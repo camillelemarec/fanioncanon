@@ -82,7 +82,7 @@ export default function ProductPage({ product }: { product: any }) {
           name="description"
           content={product.description ?? `${product.title} par Fanion Canon`}
         />
-        <link rel="canonical" href={`https://fanioncanon.com/product/${product.handle}`} />
+        <link rel="canonical" href={`https://fanioncanon.com/product/${product.handle}`} key="canonical" />
         <meta property="og:title" content={`${product.title} — Fanion Canon`} />
         <meta property="og:description" content={product.description ?? product.title} />
       </Head>

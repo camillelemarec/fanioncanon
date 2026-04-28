@@ -31,7 +31,7 @@ export default function HomePage() {
       <Head>
         <title>Fanion Canon — Fanions décoratifs marins, made in France</title>
         <meta name="description" content="Fanion Canon crée des fanions décoratifs inspirés des ports et régions françaises. Style marin, branché et élégant." />
-        <link rel="canonical" href="https://fanioncanon.com/" />
+        <link rel="canonical" href="https://fanioncanon.com" key="canonical" />
         <meta property="og:title" content="Fanion Canon — Fanions décoratifs marins" />
         <meta property="og:description" content="Fanions décoratifs inspirés des ports et régions françaises. Made in France, esprit marin et régional." />
       </Head>

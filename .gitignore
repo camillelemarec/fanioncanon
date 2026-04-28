@@ -35,6 +35,8 @@ public/images/*.png
 public/images/*.webp
 
 # Autoriser visuels nécessaires (hero + produits)
+!public/images/fanionpan.jpg
+!public/images/fanionpan2.jpg
 !public/images/page1.jpeg
 !public/images/page12.jpeg
 !public/images/logo.png
