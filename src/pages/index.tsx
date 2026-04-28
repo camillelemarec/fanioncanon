@@ -41,7 +41,7 @@ export default function HomePage() {
       <section className="relative h-[90vh] w-full overflow-hidden">
         {heroImages.map((src, idx) => (
           <div key={src} className={`absolute inset-0 transition-opacity duration-[1200ms] ${idx === current ? 'opacity-100' : 'opacity-0'}`}>
-            <Image src={src} alt="Ambiance Fanion Canon" fill className="object-cover" priority={idx===0} />
+            <img src={src} alt="Ambiance Fanion Canon" className="absolute inset-0 w-full h-full object-cover" loading={idx === 0 ? 'eager' : 'lazy'} />
             <div className="absolute inset-0 bg-black/30" />
           </div>
         ))}
