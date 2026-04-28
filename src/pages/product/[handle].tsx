@@ -5,7 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { shopifyFetch } from '@/lib/shopify'
 import { useCartShopify } from '@/context/CartContextShopify'
-import { BadgeCheck, Ruler, Sailboat, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Ruler, Sailboat, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useMemo, useState } from 'react'
 
 export async function getStaticPaths() {
@@ -168,9 +168,9 @@ export default function ProductPage({ product }: { product: any }) {
             {/* Pins caractéristiques */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               <div className="flex items-start gap-2">
-                <BadgeCheck className="h-5 w-5 text-navy-700" />
+                <span className="text-lg leading-5">🇫🇷</span>
                 <div>
-                  <div className="font-medium text-navy-700">Fait en France</div>
+                  <div className="font-medium text-navy-700">Dessiné et fabriqué en France</div>
                   <div className="text-sm text-gray-600">Fabrication soignée</div>
                 </div>
               </div>
