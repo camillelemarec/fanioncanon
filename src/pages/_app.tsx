@@ -1,5 +1,8 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Script from 'next/script'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { League_Spartan } from 'next/font/google'
 import '@/styles/globals.css'
 import { CartProviderShopify } from '@/context/CartContextShopify'
@@ -10,7 +13,29 @@ const CartDrawer = dynamic(() => import('@/components/CartDrawer'), { ssr: false
 
 const league = League_Spartan({ subsets: ['latin'], variable: '--font-league', weight: ['400','500','700'] })
 
+const META_PIXEL_ID = '1877793749546914'
+
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void
+  }
+}
+
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+        window.fbq('track', 'PageView')
+      }
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange)
+    }
+  }, [router.events])
+
   return (
     <div className={`${league.variable}`}>
       <Head>
@@ -38,6 +63,36 @@ export default function App({ Component, pageProps }: AppProps) {
           logo: `${SITE_URL}/images/logo.png`
         })}} />
       </Head>
+
+      <Script
+        id="meta-pixel"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '${META_PIXEL_ID}');
+            fbq('track', 'PageView');
+          `,
+        }}
+      />
+      <noscript>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+          alt=""
+        />
+      </noscript>
+
       <CartProviderShopify>
         <Component {...pageProps} />
         <CartDrawer />
